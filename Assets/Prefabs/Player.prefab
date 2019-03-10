@@ -111,7 +111,6 @@ GameObject:
   - component: {fileID: 3614107358237437276}
   - component: {fileID: 3614107358237437277}
   - component: {fileID: 3614107358237437279}
-  - component: {fileID: 1674750566}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -196,17 +195,3 @@ MonoBehaviour:
   LockCursor: 1
   VisibleCursor: 0
   EnableController: 1
---- !u!114 &1674750566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3614107358237437278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72e189084e51cbc4793c44b5955567e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LoopAxis: 2
-  maxDistance: 50

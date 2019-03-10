@@ -11,25 +11,29 @@ public class Looper : MonoBehaviour
 
     private float startPos;
 
-    private CharacterController character;
+    public GameObject player;
     
     // Start is called before the first frame update
     void Start()
     {
-        character = GetComponent<CharacterController>();
-        startPos = transform.position.z;
+        startPos = player.transform.position.z;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Mathf.Abs(transform.position.z) - startPos >= maxDistance)
+        Debug.Log(player.transform.position.z);
+        if (Mathf.Abs(player.transform.position.z - startPos) >= maxDistance)
         {
-            Vector3 tempPos = transform.position;
-            tempPos.z = startPos;
-            character.enabled = false;
-            transform.position = tempPos;
-            character.enabled = true;
+            float delta = startPos - player.transform.position.z;
+            foreach (CharacterController character in transform.GetComponentsInChildren<CharacterController>())
+            {
+                character.enabled = false;
+                Vector3 tempPos = character.transform.position;
+                tempPos.z = tempPos.z + delta;
+                character.transform.position = tempPos;
+                character.enabled = true;
+            }
         }
     }
 }
