@@ -112,8 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca8b393f38ab6e541acad2538202aa55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flipSpeed: 0.5
-  moveSpeed: 3.5
+  flipSpeed: 0.3
+  moveSpeed: 4
   player: {fileID: 0}
   sprite: {fileID: 0}
   controller: {fileID: 0}

@@ -40,7 +40,7 @@ public class SantaMove : MonoBehaviour
             timeSinceFlip = flipSpeed;
 
             if (Time.fixedTime-lastTouchTime < flipSpeed)
-                player.SendMessage("TakeDamage", 1f);
+                player.SendMessage("Hurt", 1f);
         }
 
         controller.SimpleMove((player.position - transform.position).normalized * moveSpeed);
@@ -59,7 +59,7 @@ public class SantaMove : MonoBehaviour
             lastTouchTime = Time.fixedTime;
     }
 
-    void Kill(float damage)
+    void Hurt(float damage)
     {
         Destroy(gameObject);
     }
