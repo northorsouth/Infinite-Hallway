@@ -22,7 +22,6 @@ public class Looper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(player.transform.position.z);
         if (Mathf.Abs(player.transform.position.z - startPos) >= maxDistance)
         {
             float delta = startPos - player.transform.position.z;
