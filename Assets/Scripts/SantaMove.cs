@@ -14,6 +14,8 @@ public class SantaMove : MonoBehaviour
     public SpriteRenderer sprite = null;
 
     public CharacterController controller = null;
+
+    private float lastTouchTime = -10f;
     
     // Start is called before the first frame update
     void Start()
@@ -36,6 +38,9 @@ public class SantaMove : MonoBehaviour
         {
             sprite.flipX = !sprite.flipX;
             timeSinceFlip = flipSpeed;
+
+            if (Time.fixedTime-lastTouchTime < flipSpeed)
+                player.SendMessage("TakeDamage", 1f);
         }
 
         controller.SimpleMove((player.position - transform.position).normalized * moveSpeed);
@@ -46,5 +51,16 @@ public class SantaMove : MonoBehaviour
     {
         transform.LookAt(transform.position + player.rotation * Vector3.forward,
             player.rotation * Vector3.up);
+    }
+
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.layer == player.gameObject.layer)
+            lastTouchTime = Time.fixedTime;
+    }
+
+    void Kill(float damage)
+    {
+        Destroy(gameObject);
     }
 }

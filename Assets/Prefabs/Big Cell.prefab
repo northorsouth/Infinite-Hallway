@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6745679611241187559}
   - component: {fileID: 196904907216364707}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Point Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7029260291936228552}
   - component: {fileID: 8245749342906690379}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Point Light (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 5496214332057255069}
   - component: {fileID: 5496214332057255068}
   - component: {fileID: 5496214332057255071}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 5496214332091787715}
   - component: {fileID: 5496214332091787714}
   - component: {fileID: 5496214332091787581}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Left Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 5496214332136048450}
   - component: {fileID: 5496214332136048317}
   - component: {fileID: 5496214332136048316}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Right Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +426,7 @@ GameObject:
   - component: {fileID: 5496214332922762884}
   - component: {fileID: 5496214332922762887}
   - component: {fileID: 5496214332922762886}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5393300113974869077}
   - component: {fileID: 6971562383421492278}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -587,7 +587,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7336956650714722166}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Big Cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}

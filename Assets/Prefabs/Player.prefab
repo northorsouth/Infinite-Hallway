@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3614107356620190682}
   - component: {fileID: 3614107356620190661}
   - component: {fileID: 3614107356620190680}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -111,7 +111,8 @@ GameObject:
   - component: {fileID: 3614107358237437276}
   - component: {fileID: 3614107358237437277}
   - component: {fileID: 3614107358237437279}
-  m_Layer: 0
+  - component: {fileID: 1871487364}
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,10 +169,10 @@ MonoBehaviour:
   controller: {fileID: 0}
   HorizontalMovementKey:
     name: Horizontal Movement (Keyboard)
-    sensitivity: 200
+    sensitivity: 300
   VerticalMovementKey:
     name: Vertical Movement (Keyboard)
-    sensitivity: 200
+    sensitivity: 300
   HorizontalMovementJoystick:
     name: Horizontal Movement (XBox)
     sensitivity: 300
@@ -180,10 +181,10 @@ MonoBehaviour:
     sensitivity: 300
   HorizontalLookKey:
     name: Horizontal Look (Keyboard)
-    sensitivity: 30
+    sensitivity: 100
   VerticalLookKey:
     name: Vertical Look (Keyboard)
-    sensitivity: 30
+    sensitivity: 100
   HorizontalLookJoystick:
     name: Horizontal Look (XBox)
     sensitivity: 100
@@ -195,3 +196,16 @@ MonoBehaviour:
   LockCursor: 1
   VisibleCursor: 0
   EnableController: 1
+--- !u!114 &1871487364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3614107358237437278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b63663edc644fe4c92313645e6564a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
