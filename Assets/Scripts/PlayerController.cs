@@ -71,11 +71,11 @@ public class PlayerController : MonoBehaviour
 				CameraTransform.Rotate(new Vector3(-Input.GetAxis(VerticalLookJoystick), 0f, 0f) * Time.deltaTime * lookSpeed);
 			}
 
-			Vector3 cameraRot = CameraTransform.rotation.eulerAngles;
-			if (cameraRot.x>80 && cameraRot.x<90) cameraRot.x = 80;
-			if (cameraRot.x>270 && cameraRot.x<280) cameraRot.x = 280;
+			Vector3 cameraRot = CameraTransform.localEulerAngles;
+			//if (cameraRot.x>80 && cameraRot.x<90) cameraRot.x = 80;
+			//if (cameraRot.x>270 && cameraRot.x<280) cameraRot.x = 280;
 			Debug.Log(cameraRot.x);
-			CameraTransform.rotation = Quaternion.Euler(cameraRot);
+			CameraTransform.localEulerAngles = cameraRot;
 		}
 		
 		if (EnableMovement)

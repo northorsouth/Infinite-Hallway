@@ -16,6 +16,8 @@ public class SantaMove : MonoBehaviour
     public CharacterController controller = null;
 
     private float lastTouchTime = -10f;
+
+    private AudioSource aud = null;
     
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,8 @@ public class SantaMove : MonoBehaviour
             controller = GetComponent<CharacterController>();
         
         timeSinceFlip = flipSpeed;
+
+        aud = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
