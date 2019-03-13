@@ -1983,9 +1983,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1871487367}
   - component: {fileID: 1871487366}
-  - component: {fileID: 1871487365}
   - component: {fileID: 1871487368}
   - component: {fileID: 1871487364}
+  - component: {fileID: 1871487365}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -2027,30 +2027,18 @@ MonoBehaviour:
   PlayerTransform: {fileID: 0}
   CameraTransform: {fileID: 0}
   controller: {fileID: 0}
-  HorizontalMovementKey:
-    name: Horizontal Movement (Keyboard)
-    sensitivity: 300
-  VerticalMovementKey:
-    name: Vertical Movement (Keyboard)
-    sensitivity: 300
-  HorizontalMovementJoystick:
-    name: Horizontal Movement (XBox)
-    sensitivity: 300
-  VerticalMovementJoystick:
-    name: Vertical Movement (XBox)
-    sensitivity: 300
-  HorizontalLookKey:
-    name: Horizontal Look (Keyboard)
-    sensitivity: 100
-  VerticalLookKey:
-    name: Vertical Look (Keyboard)
-    sensitivity: 100
-  HorizontalLookJoystick:
-    name: Horizontal Look (XBox)
-    sensitivity: 100
-  VerticalLookJoystick:
-    name: Vertical Look (XBox)
-    sensitivity: 100
+  moveSpeed: 300
+  lookSpeed: 100
+  HorizontalMovementKey: Horizontal Movement (Keyboard)
+  VerticalMovementKey: Vertical Movement (Keyboard)
+  HorizontalMovementJoystick: Horizontal Movement (XBox)
+  VerticalMovementJoystick: Vertical Movement (XBox)
+  HorizontalLookKey: Horizontal Look (Keyboard)
+  VerticalLookKey: Vertical Look (Keyboard)
+  HorizontalLookJoystick: Horizontal Look (XBox)
+  VerticalLookJoystick: Vertical Look (XBox)
+  minVerticalCamera: 0
+  maxVerticalCamera: 180
   EnableMovement: 1
   EnableLook: 1
   LockCursor: 1

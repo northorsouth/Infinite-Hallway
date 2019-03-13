@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 		public string name;
 		public float sensitivity;
 	}
-	
+
 	[Tooltip("Defaults to attached gameobject")]
 	public Transform PlayerTransform = null;
 
@@ -18,22 +18,31 @@ public class PlayerController : MonoBehaviour
 	public Transform CameraTransform = null;
 
 	public CharacterController controller = null;
-	
-	public Axis HorizontalMovementKey = new Axis { name="X Move Key", sensitivity=1f };
-	public Axis VerticalMovementKey = new Axis { name="Y Move Key", sensitivity=1f };
-	public Axis HorizontalMovementJoystick = new Axis { name="X Move Joy", sensitivity=1f	 };
-	public Axis VerticalMovementJoystick = new Axis { name="Y Move Joy", sensitivity=1f };
 
-	public Axis HorizontalLookKey = new Axis { name="X Look Key", sensitivity=1f };
-	public Axis VerticalLookKey = new Axis { name="Y Look Key", sensitivity=1f };
-	public Axis HorizontalLookJoystick = new Axis { name="X Look Joy", sensitivity=100f };
-	public Axis VerticalLookJoystick = new Axis { name="Y Look Joy", sensitivity=100f };
+	[Range(0, 500)]
+	public float moveSpeed = 300f;
+
+	[Range(0, 500)]
+	public float lookSpeed = 100f;
+	
+	public string HorizontalMovementKey = "Horizontal Movement (Keyboard)";
+	public string VerticalMovementKey = "Vertical Movement (Keyboard)";
+	public string HorizontalMovementJoystick = "Horizontal Movement (XBox)";
+	public string VerticalMovementJoystick = "Vertical Movement (XBox)";
+
+	public string HorizontalLookKey = "Horizontal Look (Keyboard)";
+	public string VerticalLookKey = "Vertical Look (Keyboard)";
+	public string HorizontalLookJoystick = "Horizontal Look (XBox)";
+	public string VerticalLookJoystick = "Vertical Look (XBox)";
+
+	public float minVerticalCamera = 0;
+	public float maxVerticalCamera = 180;
 
 	public bool EnableMovement = true;
 	public bool EnableLook = true;
 	public bool LockCursor = true;
 	public bool VisibleCursor = false;
-	public bool EnableController = false;
+	public bool EnableController = true;
 	
 	// Use this for initialization
 	void Start ()
@@ -53,14 +62,20 @@ public class PlayerController : MonoBehaviour
 	{
 		if (EnableLook)
 		{
-			PlayerTransform.Rotate(new Vector3(0f, Input.GetAxis(HorizontalLookKey.name), 0f) * Time.deltaTime * HorizontalLookKey.sensitivity);
-			CameraTransform.Rotate(new Vector3(-Input.GetAxis(VerticalLookKey.name), 0f, 0f) * Time.deltaTime * VerticalLookKey.sensitivity);
+			PlayerTransform.Rotate(new Vector3(0f, Input.GetAxis(HorizontalLookKey), 0f) * Time.deltaTime * lookSpeed);
+			CameraTransform.Rotate(new Vector3(-Input.GetAxis(VerticalLookKey), 0f, 0f) * Time.deltaTime * lookSpeed);
 
 			if (EnableController)
 			{
-				PlayerTransform.Rotate(new Vector3(0f, -Input.GetAxis(HorizontalLookJoystick.name), 0f) * Time.deltaTime * HorizontalLookJoystick.sensitivity);
-				CameraTransform.Rotate(new Vector3(-Input.GetAxis(VerticalLookJoystick.name), 0f, 0f) * Time.deltaTime * VerticalLookJoystick.sensitivity);
+				PlayerTransform.Rotate(new Vector3(0f, -Input.GetAxis(HorizontalLookJoystick), 0f) * Time.deltaTime * lookSpeed);
+				CameraTransform.Rotate(new Vector3(-Input.GetAxis(VerticalLookJoystick), 0f, 0f) * Time.deltaTime * lookSpeed);
 			}
+
+			Vector3 cameraRot = CameraTransform.rotation.eulerAngles;
+			if (cameraRot.x>80 && cameraRot.x<90) cameraRot.x = 80;
+			if (cameraRot.x>270 && cameraRot.x<280) cameraRot.x = 280;
+			Debug.Log(cameraRot.x);
+			CameraTransform.rotation = Quaternion.Euler(cameraRot);
 		}
 		
 		if (EnableMovement)
@@ -68,13 +83,13 @@ public class PlayerController : MonoBehaviour
 			Vector3 moveVec = CameraTransform.forward;
 			moveVec.y = 0f;
 
-			controller.SimpleMove(CameraTransform.forward * Input.GetAxis(VerticalMovementKey.name) * VerticalMovementKey.sensitivity * Time.deltaTime);
-			controller.SimpleMove(CameraTransform.right * Input.GetAxis(HorizontalMovementKey.name) * HorizontalMovementKey.sensitivity * Time.deltaTime);
+			controller.SimpleMove(CameraTransform.forward * Input.GetAxis(VerticalMovementKey) * moveSpeed * Time.deltaTime);
+			controller.SimpleMove(CameraTransform.right * Input.GetAxis(HorizontalMovementKey) * moveSpeed * Time.deltaTime);
 
 			if (EnableController)
 			{
-				controller.SimpleMove(CameraTransform.forward * Input.GetAxis(VerticalMovementJoystick.name) * VerticalMovementJoystick.sensitivity * Time.deltaTime);
-				controller.SimpleMove(CameraTransform.right * Input.GetAxis(HorizontalMovementJoystick.name) * HorizontalMovementJoystick.sensitivity * Time.deltaTime);
+				controller.SimpleMove(CameraTransform.forward * Input.GetAxis(VerticalMovementJoystick) * moveSpeed * Time.deltaTime);
+				controller.SimpleMove(CameraTransform.right * Input.GetAxis(HorizontalMovementJoystick) * moveSpeed * Time.deltaTime);
 			}
 		}
 
