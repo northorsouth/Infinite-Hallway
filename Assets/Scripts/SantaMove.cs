@@ -18,6 +18,8 @@ public class SantaMove : MonoBehaviour
     private float lastTouchTime = -10f;
 
     private AudioSource aud = null;
+
+    private Collider col;
     
     // Start is called before the first frame update
     void Start()
@@ -31,23 +33,28 @@ public class SantaMove : MonoBehaviour
         timeSinceFlip = flipSpeed;
 
         aud = GetComponent<AudioSource>();
+
+        col = GetComponent<Collider>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        timeSinceFlip -= Time.deltaTime;
-
-        if (timeSinceFlip <= 0)
+        if (col.enabled)
         {
-            sprite.flipX = !sprite.flipX;
-            timeSinceFlip = flipSpeed;
+            timeSinceFlip -= Time.deltaTime;
 
-            if (Time.fixedTime-lastTouchTime < flipSpeed)
-                player.SendMessage("Hurt", 1f);
+            if (timeSinceFlip <= 0)
+            {
+                sprite.flipX = !sprite.flipX;
+                timeSinceFlip = flipSpeed;
+
+                if (Time.fixedTime-lastTouchTime < flipSpeed)
+                    player.SendMessage("Hurt", 1f);
+            }
+
+            controller.SimpleMove((player.position - transform.position).normalized * moveSpeed);
         }
-
-        controller.SimpleMove((player.position - transform.position).normalized * moveSpeed);
     }
 
     //Orient the camera after all movement is completed this frame to avoid jittering
@@ -55,6 +62,9 @@ public class SantaMove : MonoBehaviour
     {
         transform.LookAt(transform.position + player.rotation * Vector3.forward,
             player.rotation * Vector3.up);
+        
+        if (!col.enabled)
+            transform.Rotate(new Vector3(0f, 90f,0f), Space.Self);
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit)
@@ -65,6 +75,8 @@ public class SantaMove : MonoBehaviour
 
     void Hurt(float damage)
     {
-        Destroy(gameObject);
+        col.enabled = false;
+        aud.Play();
+        Destroy(gameObject, 3);
     }
 }

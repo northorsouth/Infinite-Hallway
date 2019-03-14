@@ -29,7 +29,7 @@ public class PlayerDamage : MonoBehaviour
     {
         if (health <= 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("Menu");
         }
         
         if (Input.GetButtonDown(AttackInput))
