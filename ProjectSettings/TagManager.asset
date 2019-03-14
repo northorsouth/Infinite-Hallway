@@ -42,3 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Text
+    uniqueID: 1626198607
+    locked: 0
+  - name: Santa
+    uniqueID: 2792343055
+    locked: 0
